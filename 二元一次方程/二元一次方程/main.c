@@ -8,6 +8,7 @@
 
 #include <stdio.h>
 
+
 int main(int argc, const char * argv[]) {
     double a,b,c,d,e,f;
     printf("请按顺序输入二元一次方程组中的常数\n");
@@ -19,18 +20,20 @@ int main(int argc, const char * argv[]) {
     }
     else
     {
-    if (a * e == b * d)
-    {
-        if (c != f)
+        if (a * e == b * d)
+        {
+            if (c != f)
             {
                 printf("无解\n");
             }
-        else
-            printf("有无数组解\n");
-    }
+            else
+                printf("有无数组解\n");
+        }
         else{
-        printf("x = %f y = %f\n",(b * f - c * e)/(a * e - b * d),(a * f - c * d)/(b * d - a * e));
-    }
+            printf("x = %f y = %f\n",(b * f - c * e)/(a * e - b * d),(a * f - c * d)/(b * d - a * e));
+        }
     }
     return 0;
+
+
 }

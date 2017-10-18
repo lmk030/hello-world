@@ -6,10 +6,14 @@
 //  Copyright © 2017年 llmklmk. All rights reserved.
 //
 
-#include <stdio.h>
-
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    printf("Hello, World!\n");
-    return 0;
+#include<stdio.h>
+#include<bios.h>
+int main(void)
+{
+    int key;
+    clrscr();
+    while(!bioskey(1)) ;
+    key=bioskey(0);
+    printf("%x",key);
+    getch();
 }

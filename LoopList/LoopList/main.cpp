@@ -19,16 +19,34 @@ protected:
     Node p;
     Node *head;
     Node *rear;
+    int length;
 public:
     looplist(int a);
     virtual ~looplist();
-    void del();
+    void del(int a);
+    Node* getelem(int a);
 };
-void looplist::del()
+void looplist::del(int a)
 {
-    Node * q = head -> next -> next;
-    delete head -> next;
-    head ->next = q;
+    if (a == 1) {
+        Node* p = head -> next;
+        delete head;
+        head = p;
+        rear -> next = head;
+        length--;
+    }
+    if (a == length) {
+        Node* q = getelem(length - 1);
+        delete rear;
+        rear = q;
+        rear -> next = head;
+        length--;
+    }
+    
+    Node * q = getelem(a) -> next;
+    delete getelem(a);
+    getelem(a-1) -> next = q;
+    length--;
 }
 looplist::looplist(int a)
 {
@@ -44,7 +62,19 @@ looplist::looplist(int a)
 }
 looplist ::~looplist()
 {
+    while (head != NULL) {
+        del(1);
+    }
 }
+Node* looplist::getelem(int a)
+{
+    Node* p = head;
+    for (int i = 0; i < a-1; i++) {
+        p = p -> next;
+    }
+    return p;
+}
+
 
 
 int main(int argc, const char * argv[]) {
